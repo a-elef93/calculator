@@ -30,6 +30,10 @@ function displayUpdate(number){
     }
 
 }
+function resetDisplay(){
+    const display = document.querySelector(".display");
+    display.textContent = "0";
+}
 
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button) => {
@@ -44,3 +48,8 @@ operatorButtons.forEach((button) => {
         displayUpdate(button.textContent);
     })
 })
+
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener("click", () => {
+    resetDisplay();
+});
