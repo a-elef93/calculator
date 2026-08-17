@@ -3,3 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4D4D4D;
+    color: #F5F5F7;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+}
+
+.top-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8px;
+}
