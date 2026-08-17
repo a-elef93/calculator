@@ -36,6 +36,8 @@ function displayUpdateNumber(number){
  //UPDATE THE DISPLAY EVERY TIME THE USER CLICK AN OPERATOR. EVERY CONSECUTIVE CLICK REPLACES THE OPERATOR SO THEY DONT STUCK 
 function displayUpdateOperator(operator){
     const display = document.querySelector(".display");
+    firstNumber = Number(display.textContent);
+    console.log(firstNumber);
     //CHECK WHAT THE LAST CHARACTER WAS
     let lastCharacter = display.textContent[display.textContent.length -1];
     //IF ITS A NUMBER 
@@ -54,11 +56,6 @@ function resetDisplay(){
     display.textContent = "0";
 }
 
-function updateNumbers(){
-    const display = document.querySelector(".display");
-    console.log(display.textContent);
-}
-
 //CLICKS ON NUMBERS
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button) => {
@@ -72,7 +69,6 @@ const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
     button.addEventListener("click", () => {
         displayUpdateOperator(button.textContent);
-        updateNumbers();
     })
 })
 
