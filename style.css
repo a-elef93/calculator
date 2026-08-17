@@ -37,7 +37,7 @@ body {
 }
 
 .buttons {
-    margin-top: 35px;
+    margin-top: 45px;
     display: grid;
     grid-template-columns: repeat(4, 64px);
     gap: 10px;
@@ -48,4 +48,11 @@ body {
     width: 64px;
     height: 64px;
     border-radius: 30%;
+    font-size: 20px;
+}
+
+.display{
+    padding: 8px;
+    height: 50px;
+    font-size: 50px;
 }
