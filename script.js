@@ -1,3 +1,7 @@
+let firstNumber;
+let operator;
+let secondNumber;
+
 function operate(op , num1, num2 ){
 
 }
@@ -31,12 +35,14 @@ function displayUpdateNumber(number){
 }
  //UPDATE THE DISPLAY EVERY TIME THE USER CLICK AN OPERATOR. EVERY CONSECUTIVE CLICK REPLACES THE OPERATOR SO THEY DONT STUCK 
 function displayUpdateOperator(operator){
-    console.log(operator);
     const display = document.querySelector(".display");
+    //CHECK WHAT THE LAST CHARACTER WAS
     let lastCharacter = display.textContent[display.textContent.length -1];
+    //IF ITS A NUMBER 
     if(!isNaN(lastCharacter)){
         display.textContent += operator;
     }
+    //OR REPLACE THE OPERATOR
     else{
         display.textContent = display.textContent.slice(0, -1) + operator;
     }
@@ -48,6 +54,11 @@ function resetDisplay(){
     display.textContent = "0";
 }
 
+function updateNumbers(){
+    const display = document.querySelector(".display");
+    console.log(display.textContent);
+}
+
 //CLICKS ON NUMBERS
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button) => {
@@ -56,11 +67,12 @@ numberButtons.forEach((button) => {
     });
 });
 
-//CLICKS ON OPERATORS
+//CLICKS ON OPERATORS AND SAVE THE NUMBER
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
     button.addEventListener("click", () => {
         displayUpdateOperator(button.textContent);
+        updateNumbers();
     })
 })
 
@@ -69,3 +81,10 @@ const clearButton = document.querySelector(".clear");
 clearButton.addEventListener("click", () => {
     resetDisplay();
 });
+
+//CLICK ON EQUALS BUTTON
+const equalsButton = document.querySelector(".equals");
+equalsButton.addEventListener("click", () => {
+    const display = document.querySelector(".display"); 
+    console.log(display.textContent);
+} )
