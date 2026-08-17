@@ -37,7 +37,7 @@ body {
 }
 
 .buttons {
-    margin-top: 45px;
+    margin-top: 75px;
     display: grid;
     grid-template-columns: repeat(4, 64px);
     gap: 10px;
@@ -45,8 +45,8 @@ body {
 }
 
 .buttons button{
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
     border-radius: 30%;
     font-size: 20px;
 }

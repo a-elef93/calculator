@@ -21,7 +21,14 @@ function divide(a , b){
 function displayUpdate(number){
     // let n = parseInt(number);
     const display = document.querySelector(".display");
-    display.textContent= number;
+    if(display.textContent === "0")
+    {
+        display.textContent = number;
+    }
+    else{
+        display.textContent += number;
+    }
+
 }
 
 const numberButtons = document.querySelectorAll(".number");
@@ -30,3 +37,10 @@ numberButtons.forEach((button) => {
         displayUpdate(button.textContent);
     });
 });
+
+const operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        displayUpdate(button.textContent);
+    })
+})
