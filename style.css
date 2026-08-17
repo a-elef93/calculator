@@ -18,4 +18,17 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 8px;
+    gap: 8px;
+}
+
+.calculator{
+    margin-top: 80px;
+    border-radius: 25px;
+    border: 2px solid #6E6E73;
+    background-color: #242426;
+    padding: 20px;
+    width: 350px;
+    min-height: 500px;
+    color: #F5F5F7;
+    /* orange =     #FF9F0A  */
 }
