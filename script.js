@@ -1,6 +1,10 @@
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = null;
+let operator = null;
+let secondNumber = null;
+let waitSecondNumber = false;
+
+const display = document.querySelector(".display");
+
 
 function operate(op , num1, num2 ){
 
@@ -24,7 +28,6 @@ function divide(a , b){
 
 //UPDATE THE DISPLAY EVERY TIME THE USER CLICKS A NUMBER BUTTON
 function displayUpdateNumber(number){
-    const display = document.querySelector(".display");
     if(display.textContent === "0")
     {
         display.textContent = number;
@@ -35,9 +38,11 @@ function displayUpdateNumber(number){
 }
  //UPDATE THE DISPLAY EVERY TIME THE USER CLICK AN OPERATOR. EVERY CONSECUTIVE CLICK REPLACES THE OPERATOR SO THEY DONT STUCK 
 function displayUpdateOperator(operator){
-    const display = document.querySelector(".display");
-    firstNumber = Number(display.textContent);
-    console.log(firstNumber);
+    //OPERATOR PRESSED SO WE GOT THE 1ST NUMBER
+    if(waitSecondNumber){
+        firstNumber = Number(display.textContent);
+        console.log(firstNumber);
+    }
     //CHECK WHAT THE LAST CHARACTER WAS
     let lastCharacter = display.textContent[display.textContent.length -1];
     //IF ITS A NUMBER 
@@ -52,7 +57,6 @@ function displayUpdateOperator(operator){
 
 //RESET THE DISPLAY TO VALUE '0' 
 function resetDisplay(){
-    const display = document.querySelector(".display");
     display.textContent = "0";
 }
 
