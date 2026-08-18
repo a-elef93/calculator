@@ -1,6 +1,8 @@
 let firstNumber = null;
 let operator = null;
 let waitSecondNumber = false;
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const operators = ["+", "-", "*", "/"];
 
 const display = document.querySelector(".display");
 
@@ -158,4 +160,12 @@ decimalButton.addEventListener("click", () => {
 const backspaceButton = document.querySelector(".backspace");
 backspaceButton.addEventListener("click", () => {
     erase();
+});
+
+//KEYBOARD FUNCTION
+document.addEventListener("keydown", (event) => {
+    console.log(event.key);
+    if(numbers.includes(event.key)){
+        displayUpdateNumber(Number(event.key));
+    }
 });
