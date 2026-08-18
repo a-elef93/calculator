@@ -41,6 +41,9 @@ function operate(op , num1, num2 ){
 
 //UPDATE THE DISPLAY EVERY TIME THE USER CLICKS A NUMBER BUTTON
 function displayUpdateNumber(number){
+    if (display.textContent.length >= 10 && !waitSecondNumber) {
+        return;
+    }
     if(display.textContent === "0" || waitSecondNumber){
         display.textContent = number;
         waitSecondNumber =false;
@@ -123,10 +126,15 @@ function erase(){
 }
 
 //ROUNDING THE RESULTS
-function roundResult(number){
-    if(number !== "Error"){
-        return Math.round(number * 100000000) / 100000000;
+function roundResult(number) {
+    if (number === "Error") {
+        return "Error";
     }
+    const rounded = Math.round(number * 100000000) / 100000000;
+    if (String(rounded).length > 10) {
+        return rounded.toExponential(4);
+    }
+    return rounded;
 }
 
 //CLICKS ON NUMBERS
