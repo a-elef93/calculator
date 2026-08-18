@@ -91,7 +91,7 @@ function calculateResult(){
         firstNumber = result;
     }
     operator = null;
-    waitingForSecondNumber = true;
+    waitSecondNumber = true;
 }
 
 //RESET THE DISPLAY TO VALUE '0' WHEN CLEAR BUTTON IS PRESSED
