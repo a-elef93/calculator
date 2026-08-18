@@ -27,7 +27,7 @@ function divide(a , b){
     }
 }
 
-function calculate(op , num1, num2 ){
+function operate(op , num1, num2 ){
     if (op === "+") {
         return add(num1, num2);
     } else if (op === "-") {
@@ -67,7 +67,7 @@ function displayUpdateOperator(clickedOperator){
     }
     //IT HAS BEEN PRESSED ALREADY SO WE HAVE TO CALCULATE
     else if(operator !== null){
-        const result = calculate(operator, firstNumber , currentNumber);
+        const result = operate(operator, firstNumber , currentNumber);
         if (result === "Error") {
             firstNumber = null;
             operator = null;
@@ -75,7 +75,7 @@ function displayUpdateOperator(clickedOperator){
             return;
         }
         //DISPLAY SAVE THE RESULT TO firstNumber SO WE CAN CONTINUE CONSECUTIVE CALCULATIONS
-        display.textContent = result;
+        display.textContent = roundResult(result);
         firstNumber = result;
     }
     //SAVE NEW OPERATOR
@@ -90,8 +90,8 @@ function calculateResult(){
         return;
     }
     const secondNumber = Number(display.textContent);
-    const result = calculate(operator,firstNumber,secondNumber);
-    display.textContent = result;
+    const result = operate(operator,firstNumber,secondNumber);
+    display.textContent = roundResult(result);
     if (result === "Error") {
         firstNumber = null;
     } else {
@@ -119,6 +119,13 @@ function erase(){
     display.textContent = display.textContent.slice(0, -1);
     if(display.textContent === ""){
         display.textContent = "0";
+    }
+}
+
+//ROUNDING THE RESULTS
+function roundResult(number){
+    if(number !== "Error"){
+        return Math.round(number * 100000000) / 100000000;
     }
 }
 
