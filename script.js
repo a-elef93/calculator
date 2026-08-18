@@ -4,11 +4,6 @@ let waitSecondNumber = false;
 
 const display = document.querySelector(".display");
 
-
-function operate(op , num1, num2 ){
-
-}
-
 function add(a, b){
     return a + b;
 }
@@ -23,6 +18,18 @@ function multiply(a , b){
 
 function divide(a , b){
     return a / b;
+}
+
+function calculate(op , num1, num2 ){
+    if (op === "+") {
+        return add(num1, num2);
+    } else if (op === "-") {
+        return substract(num1, num2);
+    } else if (op === "×") {
+        return multiply(num1, num2);
+    } else if (op === "÷") {
+        return divide(num1, num2);
+    }
 }
 
 //UPDATE THE DISPLAY EVERY TIME THE USER CLICKS A NUMBER BUTTON
@@ -43,7 +50,7 @@ function displayUpdateOperator(clickedOperator){
         return;
     }
     //IF CONSECUTIVE OPERATORS PRESSES THEN IT GETS REPLACED
-    if (operator !== null && waitingForSecondNumber) {
+    if (operator !== null && waitSecondNumber) {
         operator = clickedOperator;
         return;
     }
@@ -53,29 +60,28 @@ function displayUpdateOperator(clickedOperator){
     }
     //IT HAS BEEN PRESSED ALREADY SO WE HAVE TO CALCULATE
     else if(operator !== null){
-        const result = operate(operator, firstNumber , currentNumber);
+        const result = calculate(operator, firstNumber , currentNumber);
         if (result === "Error") {
             firstNumber = null;
             operator = null;
-            waitingForSecondNumber = true;
+            waitSecondNumber = true;
             return;
         }
-        //WE SAVE THE RESULT TO firstNumber SO WE CAN CONTINUE CONSECUTIVE CALCULATIONS
+        //DISPLAY SAVE THE RESULT TO firstNumber SO WE CAN CONTINUE CONSECUTIVE CALCULATIONS
+        display.textContent = result;
         firstNumber = result;
     }
+    //SAVE NEW OPERATOR
     operator = clickedOperator;
     waitSecondNumber = true;
 }
 
-//RESET THE DISPLAY TO VALUE '0' 
+//RESET THE DISPLAY TO VALUE '0' WHEN CLEAR BUTTON IS PRESSED
 function resetDisplay(){
-    if(waitSecondNumber){
-        display.textContent = "";
-    }
-    //DISPLAY ZERO ONLY WITH THE CLEAR BUTTON
-    else{
-        display.textContent = "0";
-    }
+    display.textContent = "0";
+    firstNumber = null;
+    operator = null;
+    waitSecondNumber = false;
 }
 
 //CLICKS ON NUMBERS
