@@ -28,36 +28,54 @@ function divide(a , b){
 
 //UPDATE THE DISPLAY EVERY TIME THE USER CLICKS A NUMBER BUTTON
 function displayUpdateNumber(number){
-    if(display.textContent === "0")
-    {
+    if(display.textContent === "0" || waitSecondNumber){
         display.textContent = number;
+        waitSecondNumber =false;
     }
     else{
         display.textContent += number;
     }
 }
+
  //UPDATE THE DISPLAY EVERY TIME THE USER CLICK AN OPERATOR. EVERY CONSECUTIVE CLICK REPLACES THE OPERATOR SO THEY DONT STUCK 
 function displayUpdateOperator(operator){
-    //OPERATOR PRESSED SO WE GOT THE 1ST NUMBER
-    if(waitSecondNumber){
-        firstNumber = Number(display.textContent);
-        console.log(firstNumber);
+    const currentNumber = Number(display.textContent);
+    if (display.textContent === "Error") {
+        return;
+    }
+    //IF CONSECUTIVE OPERATORS PRESSES THEN IT GETS REPLACED
+    if (operator !== null && waitingForSecondNumber) {
+        operator = clickedOperator;
+        return;
     }
     //CHECK WHAT THE LAST CHARACTER WAS
     let lastCharacter = display.textContent[display.textContent.length -1];
     //IF ITS A NUMBER 
-    if(!isNaN(lastCharacter)){
-        display.textContent += operator;
+    if(waitSecondNumber){
+        firstNumber = Number(display.textContent);
+        if(!isNaN(lastCharacter)){
+            display.textContent += operator;
+            console.log(firstNumber);
+            resetDisplay();
+        }
+        //OR REPLACE THE OPERATOR
+        else{
+            display.textContent = display.textContent.slice(0, -1) + operator;
+        }
+        waitSecondNumber =false;
     }
-    //OR REPLACE THE OPERATOR
-    else{
-        display.textContent = display.textContent.slice(0, -1) + operator;
-    }
+
 }
 
 //RESET THE DISPLAY TO VALUE '0' 
 function resetDisplay(){
-    display.textContent = "0";
+    if(waitSecondNumber){
+        display.textContent = "";
+    }
+    //DISPLAY ZERO ONLY WITH THE CLEAR BUTTON
+    else{
+        display.textContent = "0";
+    }
 }
 
 //CLICKS ON NUMBERS
