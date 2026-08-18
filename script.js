@@ -164,8 +164,35 @@ backspaceButton.addEventListener("click", () => {
 
 //KEYBOARD FUNCTION
 document.addEventListener("keydown", (event) => {
-    console.log(event.key);
-    if(numbers.includes(event.key)){
-        displayUpdateNumber(Number(event.key));
+    const key = event.key;
+    if(numbers.includes(key)){
+        displayUpdateNumber(Number(key));
+    }
+    if(operators.includes(key)){
+        if(key === "*"){
+            displayUpdateOperator("×");
+        }
+        else if(key === "/"){
+            displayUpdateOperator("÷");
+        }
+        else if(key === "+"){
+            displayUpdateOperator("+");
+        }
+        else{
+            displayUpdateOperator("-");
+        }
+       
+    }
+    if(key === "Enter"){
+        calculateResult();
+    }    
+    if(key === "Backspace"){
+        erase();
+    }
+    if(key === "Escape"){
+        resetDisplay();
+    }
+    if(key === "."){
+        inputDecimal();
     }
 });
