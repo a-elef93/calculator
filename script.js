@@ -76,6 +76,24 @@ function displayUpdateOperator(clickedOperator){
     waitSecondNumber = true;
 }
 
+//CALCULATE RESULT WHEN "=" IS PRESSED
+function calculateResult(){
+    //CHECK IF OPERATOR HAS BEEN PRESSED OR SECOND NUMBER IS INPUTED
+    if(operator === null || waitSecondNumber || display.textContent === "Error"){
+        return;
+    }
+    const secondNumber = Number(display.textContent);
+    const result = calculate(operator,firstNumber,secondNumber);
+    display.textContent = result;
+    if (result === "Error") {
+        firstNumber = null;
+    } else {
+        firstNumber = result;
+    }
+    operator = null;
+    waitingForSecondNumber = true;
+}
+
 //RESET THE DISPLAY TO VALUE '0' WHEN CLEAR BUTTON IS PRESSED
 function resetDisplay(){
     display.textContent = "0";
@@ -109,6 +127,5 @@ clearButton.addEventListener("click", () => {
 //CLICK ON EQUALS BUTTON
 const equalsButton = document.querySelector(".equals");
 equalsButton.addEventListener("click", () => {
-    const display = document.querySelector(".display"); 
-    console.log(display.textContent);
-} )
+    calculateResult();
+});
