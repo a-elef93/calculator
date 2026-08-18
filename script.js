@@ -113,6 +113,13 @@ function inputDecimal(){
     }
 }
 
+function erase(){
+    display.textContent = display.textContent.slice(0, -1);
+    if(display.textContent === ""){
+        display.textContent = "0";
+    }
+}
+
 //CLICKS ON NUMBERS
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button) => {
@@ -145,4 +152,10 @@ equalsButton.addEventListener("click", () => {
 const decimalButton = document.querySelector(".decimals");
 decimalButton.addEventListener("click", () => {
     inputDecimal();
-})
+});
+
+//CLICK ON BACKSPACE BUTTON
+const backspaceButton = document.querySelector(".backspace");
+backspaceButton.addEventListener("click", () => {
+    erase();
+});
