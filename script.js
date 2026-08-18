@@ -107,6 +107,12 @@ function resetDisplay(){
     waitSecondNumber = false;
 }
 
+function inputDecimal(){
+    if(!display.textContent.includes(".")){
+        display.textContent += ".";
+    }
+}
+
 //CLICKS ON NUMBERS
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button) => {
@@ -134,3 +140,9 @@ const equalsButton = document.querySelector(".equals");
 equalsButton.addEventListener("click", () => {
     calculateResult();
 });
+
+//CLICK ON DECIMAL BUTTON
+const decimalButton = document.querySelector(".decimals");
+decimalButton.addEventListener("click", () => {
+    inputDecimal();
+})
