@@ -13,6 +13,14 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
 }
 
+h1 , .quote{
+    -webkit-text-stroke: 0.5px #FF9F0A;
+}
+
+.header{
+    font-size: 45px;
+}
+
 .top-section{
     display: flex;
     flex-direction: column;
@@ -46,7 +54,7 @@ body {
 .buttons button{
     width: 64px;
     height: 64px;
-    border-radius: 30%;
+    border-radius: 40%;
     font-size: 20px;
     border: 2px solid #FF9F0A;
 }
@@ -55,4 +63,28 @@ body {
     padding: 8px;
     height: 50px;
     font-size: 50px;
+}
+
+.operator, .equals{
+    background-color: #FF9F0A;
+}
+
+.backspace, .clear, .percent{
+    background-color: #A0A0A0;
+}
+
+.footer{
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 14px;
+    color: #a1a1a6;
+}
+
+.footer a {
+    color: #FF9F0A;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
