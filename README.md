@@ -28,17 +28,14 @@ The main goal of this project is to practice and demonstrate:
 * Combining HTML, CSS, and JavaScript into a complete interactive application
 * Writing clean and maintainable code
 
-Live Demo
+Live Demo: https://a-elef93.github.io/calculator/
 
-Coming soon.
 
-Project Status
-
-🚧 In Development
+Project Status: Completed
 
 This project is currently being built as part of The Odin Project Foundations course.
 
 
 ⸻
 
-Built by a-elef93
+Built by Eleftheriadis Anastasios (a-elef93)
