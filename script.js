@@ -1,6 +1,5 @@
 let firstNumber = null;
 let operator = null;
-let secondNumber = null;
 let waitSecondNumber = false;
 
 const display = document.querySelector(".display");
@@ -38,7 +37,7 @@ function displayUpdateNumber(number){
 }
 
  //UPDATE THE DISPLAY EVERY TIME THE USER CLICK AN OPERATOR. EVERY CONSECUTIVE CLICK REPLACES THE OPERATOR SO THEY DONT STUCK 
-function displayUpdateOperator(operator){
+function displayUpdateOperator(clickedOperator){
     const currentNumber = Number(display.textContent);
     if (display.textContent === "Error") {
         return;
@@ -48,23 +47,24 @@ function displayUpdateOperator(operator){
         operator = clickedOperator;
         return;
     }
-    //CHECK WHAT THE LAST CHARACTER WAS
-    let lastCharacter = display.textContent[display.textContent.length -1];
-    //IF ITS A NUMBER 
-    if(waitSecondNumber){
-        firstNumber = Number(display.textContent);
-        if(!isNaN(lastCharacter)){
-            display.textContent += operator;
-            console.log(firstNumber);
-            resetDisplay();
-        }
-        //OR REPLACE THE OPERATOR
-        else{
-            display.textContent = display.textContent.slice(0, -1) + operator;
-        }
-        waitSecondNumber =false;
+    //OPERATOR PRESSED SO WE SAVE THE 1ST INPUT
+    if (firstNumber === null) {
+            firstNumber = currentNumber;
     }
-
+    //IT HAS BEEN PRESSED ALREADY SO WE HAVE TO CALCULATE
+    else if(operator !== null){
+        const result = operate(operator, firstNumber , currentNumber);
+        if (result === "Error") {
+            firstNumber = null;
+            operator = null;
+            waitingForSecondNumber = true;
+            return;
+        }
+        //WE SAVE THE RESULT TO firstNumber SO WE CAN CONTINUE CONSECUTIVE CALCULATIONS
+        firstNumber = result;
+    }
+    operator = clickedOperator;
+    waitSecondNumber = true;
 }
 
 //RESET THE DISPLAY TO VALUE '0' 
