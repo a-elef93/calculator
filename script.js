@@ -17,7 +17,12 @@ function multiply(a , b){
 }
 
 function divide(a , b){
-    return a / b;
+    if(b === 0){
+        return "Error";
+    }
+    else{
+        return a / b;
+    }
 }
 
 function calculate(op , num1, num2 ){
